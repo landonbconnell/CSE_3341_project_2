@@ -4,16 +4,24 @@ public class Assign {
     String identifier2;
     Expr expr1;
     Expr expr2;
+    boolean isInstantiatingObject = false;
 
     void parse() {
         identifier1 = Parser.scanner.getId();
 
         Parser.scanner.nextToken();
 
-        if (Parser.currentTokenIs(Core.EQUAL)) {
+        if (Parser.currentTokenIs(Core.ASSIGN)) {
+
             Parser.scanner.nextToken();
 
-            if (Parser.currentTokenIs(Core.NEW)) {
+            if (!Parser.currentTokenIs(Core.NEW)) {
+                expr1 = new Expr();
+                expr1.parse(); // should consume tokens until ')' or ';' is detected
+
+            } else {
+                isInstantiatingObject = true;
+
                 Parser.scanner.nextToken();
 
                 if (!Parser.currentTokenIs(Core.OBJECT)) {
@@ -43,6 +51,38 @@ public class Assign {
                     System.out.println("ERROR: expected ';'.");
                 }
             }
+        }
+    }
+
+    void printer() {
+
+        // id = <expr>; | id = new object( <expr> );
+        if ((expr1 != null) && (expr2 == null)) {
+            
+            // id = <expr>;
+            if (!isInstantiatingObject) {
+                System.out.print("\t" + identifier1 + " = ");
+                expr1.printer();
+                System.out.println(";");
+
+                // id = new object( <expr> );
+            } else {
+                System.out.print("\t" + identifier1 + " = new object( ");
+                expr1.printer();
+                System.out.println(" );");
+            }
+
+        // id [ <expr> ] = <expr>;
+        } else if ((expr1 != null) && (expr2 != null)) {
+            System.out.print("\t" + identifier1 + " [ ");
+            expr1.printer();
+            System.out.print(" ] = ");
+            expr2.printer();
+            System.out.println(";");
+
+        // id : id;
+        } else if (identifier2 != null) {
+            System.out.println("\t" + identifier1 + " : " + identifier2 + ";");
         }
     }
 }

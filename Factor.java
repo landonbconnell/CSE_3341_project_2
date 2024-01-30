@@ -1,7 +1,7 @@
 public class Factor {
 
     String identifier;
-    int constant;
+    Integer constant;
     Expr expr;
 
     void parse() {
@@ -53,6 +53,35 @@ public class Factor {
             }
 
             Parser.scanner.nextToken();
+        }
+    }
+
+    void printer() {
+
+        // id
+        if (identifier != null) {
+            System.out.print(identifier);
+
+            // id [ <expr> ]
+            if (expr != null) {
+                System.out.print(" [");
+                expr.printer();
+                System.out.print(" ]");
+            }
+
+        // const
+        } else if (constant != null) {
+            System.out.print(constant);
+
+        // ( <expr> )
+        } else if (expr != null) {
+            System.out.print("( ");
+            expr.printer();
+            System.out.print(" )");
+
+        // in ();
+        } else {
+            System.out.print("in ()");
         }
     }
 }

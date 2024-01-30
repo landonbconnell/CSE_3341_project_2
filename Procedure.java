@@ -62,5 +62,11 @@ public class Procedure {
         if (decl_seq != null) {
             decl_seq.printer();
         }
+
+        System.out.println("begin");
+
+        stmt_seq.printer();
+
+        System.out.println("end");
     }
 }

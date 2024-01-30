@@ -1,3 +1,7 @@
 ERROR: expected end-of-stream.
 procedure test5 is 
 	integer x;
+begin
+	x = 1;
+	x = 2;
+end

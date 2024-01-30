@@ -2,3 +2,8 @@ ERROR: expected end-of-stream.
 procedure test26 is 
 	integer x;
 	integer n;
+begin
+	x = 4;
+	n = in ();
+	x = x - 1;
+end

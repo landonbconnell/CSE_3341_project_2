@@ -24,4 +24,18 @@ public class Stmt {
             decl.parse();
         }
     }
+
+    void printer() {
+        if (assign != null) {
+            assign.printer();
+        } else if (if_stmt != null) {
+
+        } else if (loop != null) {
+
+        } else if (out != null) {
+
+        } else if (decl != null) {
+            decl.printer();
+        }
+    }
 }

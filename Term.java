@@ -17,4 +17,12 @@ public class Term {
             term.parse();
         }
     }
+
+    void printer() {
+        factor.printer();
+        if (term != null) {
+            System.out.print(" " + operator + " ");
+            term.printer();
+        }
+    }
 }

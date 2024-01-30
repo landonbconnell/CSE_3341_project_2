@@ -1,3 +1,7 @@
 procedure test12 is 
 	integer x;
 	integer y;
+begin
+	x = 1;
+	y = 2;
+end
