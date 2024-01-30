@@ -1,1 +1,4 @@
 procedure test21 is 
+	integer x;
+	integer y;
+	integer z;

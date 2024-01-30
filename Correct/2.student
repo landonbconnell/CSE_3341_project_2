@@ -1,1 +1,2 @@
 procedure test2 is 
+	integer x;

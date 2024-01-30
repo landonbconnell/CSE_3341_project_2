@@ -1,2 +1,4 @@
 ERROR: expected end-of-stream.
 procedure test26 is 
+	integer x;
+	integer n;

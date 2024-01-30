@@ -20,4 +20,8 @@ public class DeclInteger {
             System.exit(0);
         }
     }
+
+    void printer() {
+        System.out.println("\tinteger " + identifier + ";");
+    }
 }

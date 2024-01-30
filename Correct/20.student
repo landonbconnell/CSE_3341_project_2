@@ -1,1 +1,4 @@
 procedure test20 is 
+	integer x;
+	integer y;
+	integer z;

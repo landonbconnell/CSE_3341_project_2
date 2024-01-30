@@ -15,4 +15,11 @@ public class DeclSeq {
             decl_seq.parse();
         }
     }
+
+    void printer() {
+        decl.printer();
+        if (decl_seq != null) {
+            decl_seq.printer();
+        }
+    }
 }

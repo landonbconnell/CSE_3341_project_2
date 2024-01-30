@@ -20,4 +20,8 @@ public class DeclObj {
             System.exit(0);
         }
     }
+
+    void printer() {
+        System.out.println("\tobject " + identifier + ";");
+    }
 }

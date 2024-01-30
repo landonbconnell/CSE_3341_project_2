@@ -58,8 +58,9 @@ public class Procedure {
 
     void printer() {
         System.out.println("procedure " + procedureName + " is ");
-        // if (decl_seq != null) {
-        //     decl_seq.printer();
-        // }
+        
+        if (decl_seq != null) {
+            decl_seq.printer();
+        }
     }
 }

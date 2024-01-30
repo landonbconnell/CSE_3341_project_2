@@ -15,4 +15,12 @@ public class Decl {
             System.exit(0);
         }
     }
+
+    void printer() {
+        if (decl_int != null) {
+            decl_int.printer();
+        } else {
+            decl_obj.printer();
+        }
+    }
 }

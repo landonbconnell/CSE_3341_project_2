@@ -1,2 +1,5 @@
 ERROR: expected end-of-stream.
 procedure test22 is 
+	integer x;
+	integer y;
+	integer z;
