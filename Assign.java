@@ -12,7 +12,6 @@ public class Assign {
         Parser.scanner.nextToken();
 
         if (Parser.currentTokenIs(Core.ASSIGN)) {
-
             Parser.scanner.nextToken();
 
             if (!Parser.currentTokenIs(Core.NEW)) {
@@ -46,11 +45,51 @@ public class Assign {
                 }
 
                 Parser.scanner.nextToken();
-                
-                if (!Parser.currentTokenIs(Core.SEMICOLON)) {
-                    System.out.println("ERROR: expected ';'.");
-                }
             }
+        } else if (Parser.currentTokenIs(Core.LBRACE)) {
+            Parser.scanner.nextToken();
+
+            expr1 = new Expr();
+            expr1.parse();
+
+            if (!Parser.currentTokenIs(Core.RBRACE)) {
+                System.out.println("ERROR: expected ']'.");
+                System.exit(0);
+            }
+
+            Parser.scanner.nextToken();
+
+            if (!Parser.currentTokenIs(Core.ASSIGN)) {
+                System.out.println("ERROR: expected '='.");
+                System.exit(0);
+            }
+
+            Parser.scanner.nextToken();
+
+            expr2 = new Expr();
+            expr2.parse();
+
+        } else if (Parser.currentTokenIs(Core.COLON)) {
+            
+            Parser.scanner.nextToken();
+            
+            if (!Parser.currentTokenIs(Core.ID)) {
+                System.out.println("ERROR: expected an identifier.");
+                System.exit(0);
+            }
+
+            identifier2 = Parser.scanner.getId();
+
+            Parser.scanner.nextToken();
+
+        } else {
+            System.out.println("ERROR: expected '=', ':', or '['.");
+            System.exit(0);
+        }
+
+        if (!Parser.currentTokenIs(Core.SEMICOLON)) {
+            System.out.println("ERROR: expected ';'.");
+            System.exit(0);
         }
     }
 
@@ -58,7 +97,7 @@ public class Assign {
 
         // id = <expr>; | id = new object( <expr> );
         if ((expr1 != null) && (expr2 == null)) {
-            
+
             // id = <expr>;
             if (!isInstantiatingObject) {
                 System.out.print("\t" + identifier1 + " = ");

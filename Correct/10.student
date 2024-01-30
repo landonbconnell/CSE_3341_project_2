@@ -1,6 +1,1 @@
-procedure test10 is 
-	integer x;
-	object a;
-begin
-	x = 1 - 1 - 1 - 1;
-end
+ERROR: expected '=', ':', or '['.

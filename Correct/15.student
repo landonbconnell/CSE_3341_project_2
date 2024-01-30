@@ -1,10 +1,1 @@
-ERROR: expected end-of-stream.
-procedure test15 is 
-	integer x;
-	integer y;
-begin
-	x = 1;
-	y = 1;
-	x = 0;
-	x = 10;
-end
+ERROR: expected '=', ':', or '['.

@@ -1,5 +1,1 @@
-procedure test9 is 
-	integer x;
-begin
-	x = 10;
-end
+ERROR: expected '=', ':', or '['.
