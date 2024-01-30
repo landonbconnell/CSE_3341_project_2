@@ -1,0 +1,1 @@
+rm Assign.class Core.class Decl.class DeclInteger.class DeclObj.class DeclSeq.class Expr.class Factor.class If.class Loop.class Main.class Out.class Parser.class Procedure.class Scanner.class Stmt.class StmtSeq.class Term.class

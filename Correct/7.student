@@ -1,5 +1,1 @@
-procedure test7 is
-	integer x;
-begin 
-	x=in();
-end
+procedure test7 is 

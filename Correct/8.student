@@ -1,12 +1,1 @@
-procedure test8 is
-	integer x;
-	integer y;
-	integer z;
-	object a;
-	object b;
-	object c;
-begin 
-	x=in();
-	out(4);
-	a=new object(3);
-end
+ERROR: expected identifier.

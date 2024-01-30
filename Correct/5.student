@@ -1,10 +1,2 @@
-procedure test5 is
-	integer x;
-begin 
-	if 1==1 then
-		x=1;
-	else
-		x=2;
-	end
-	out(x);
-end
+ERROR: expected end-of-stream.
+procedure test5 is 

@@ -1,5 +1,1 @@
-procedure test1 is
-	integer x;
-begin 
-	x=10;
-end
+procedure test1 is 
