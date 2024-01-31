@@ -2,7 +2,6 @@ public class Out {
     Expr expr;
 
     void parse() {
-
         Parser.scanner.nextToken();
 
         if (!Parser.currentTokenIs(Core.LPAREN)) {
@@ -26,5 +25,11 @@ public class Out {
             System.out.println("ERROR: expected ';'.");
             System.exit(0);
         }
+    }
+
+    void printer() {
+        System.out.print("out(");
+        expr.printer();
+        System.out.println(");");
     }
 }

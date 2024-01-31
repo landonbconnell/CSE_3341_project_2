@@ -1,5 +1,5 @@
 procedure test7 is 
 	integer x;
 begin
-	x = in ();
+	x = in();
 end

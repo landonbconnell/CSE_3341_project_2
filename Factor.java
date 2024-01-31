@@ -82,7 +82,7 @@ public class Factor {
 
         // in ();
         } else {
-            System.out.print("in ()");
+            System.out.print("in()");
         }
     }
 }

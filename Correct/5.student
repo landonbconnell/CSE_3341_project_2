@@ -1,4 +1,9 @@
 procedure test5 is 
 	integer x;
 begin
+	if in() == 1then
+	x = 1;
+	x = 2;
+end
+out(x);
 end

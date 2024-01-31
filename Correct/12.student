@@ -4,4 +4,6 @@ procedure test12 is
 begin
 	x = 1;
 	y = 2;
+out(x);
+out(y);
 end

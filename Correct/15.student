@@ -4,4 +4,14 @@ procedure test15 is
 begin
 	x = 1;
 	y = 1;
+	if in() == ythen
+	x = 0;
+	if in() < ythen
+	x = 10;
+end
+	if in() < ythen
+	x = 5;
+end
+end
+out(x);
 end

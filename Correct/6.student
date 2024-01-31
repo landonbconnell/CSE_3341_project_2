@@ -2,4 +2,9 @@ procedure test6 is
 begin
 	integer x;
 	integer y;
+while in() < 1 do
+	x = 1;
+	y = x;
+end
+out(4);
 end

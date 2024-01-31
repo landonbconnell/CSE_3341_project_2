@@ -3,4 +3,9 @@ procedure test26 is
 	integer n;
 begin
 	x = 4;
+while not  do
+	n = in();
+	x = x - 1;
+out(n);
+end
 end

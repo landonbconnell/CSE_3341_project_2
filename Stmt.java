@@ -30,11 +30,11 @@ public class Stmt {
         if (assign != null) {
             assign.printer();
         } else if (if_stmt != null) {
-
+            if_stmt.printer();
         } else if (loop != null) {
-
+            loop.printer();
         } else if (out != null) {
-
+            out.printer();
         } else if (decl != null) {
             decl.printer();
         }

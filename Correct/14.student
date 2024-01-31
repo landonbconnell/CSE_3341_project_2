@@ -4,4 +4,10 @@ procedure test14 is
 begin
 	x = 10;
 	y = x;
+	if in() == ythen
+	integer z;
+	z = x + y;
+out(z);
+end
+out(y);
 end

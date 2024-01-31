@@ -6,6 +6,7 @@ procedure test8 is
 	object b;
 	object c;
 begin
-	x = in ();
+	x = in();
+out(4);
 	a = new object( 3 );
 end

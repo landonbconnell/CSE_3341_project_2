@@ -1,4 +1,8 @@
 procedure test4 is 
 	integer x;
 begin
+	if [ in() == 1 ]then
+	x = 10;
+end
+out(x);
 end
