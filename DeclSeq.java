@@ -4,6 +4,7 @@ public class DeclSeq {
     DeclSeq decl_seq;
 
     void parse() {
+
         decl = new Decl();
         decl.parse();
 

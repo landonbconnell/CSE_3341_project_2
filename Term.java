@@ -5,6 +5,7 @@ public class Term {
     Term term;
 
     void parse() {
+
         factor = new Factor();
         factor.parse();
 

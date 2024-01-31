@@ -3,6 +3,7 @@ public class DeclObj {
     String identifier;
 
     void parse() {
+
         // current token has already been checked, it's object
         Parser.scanner.nextToken();
 

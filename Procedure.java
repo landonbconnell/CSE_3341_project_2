@@ -4,6 +4,7 @@ public class Procedure {
     StmtSeq stmt_seq;
 
     void parse() {
+
         if (!Parser.currentTokenIs(Core.PROCEDURE)) {
 
             // TODO - these error messages are repeated a lot, maybe create a function

@@ -1,6 +1,4 @@
-ERROR: expected end-of-stream.
 procedure test4 is 
 	integer x;
 begin
-	x = 10;
 end

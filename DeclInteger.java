@@ -3,6 +3,7 @@ public class DeclInteger {
     String identifier;
 
     void parse() {
+
         // current token has already been checked, it's integer
         Parser.scanner.nextToken();
 

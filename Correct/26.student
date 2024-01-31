@@ -1,1 +1,6 @@
-ERROR: expected '=', ':', or '['.
+procedure test26 is 
+	integer x;
+	integer n;
+begin
+	x = 4;
+end

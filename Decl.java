@@ -4,6 +4,7 @@ public class Decl {
     DeclObj decl_obj;
 
     void parse() {
+
         if (Parser.currentTokenIs(Core.INTEGER)) {
             decl_int = new DeclInteger();
             decl_int.parse();

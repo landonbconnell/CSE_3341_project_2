@@ -1,9 +1,7 @@
 public class Assign {
     
-    String identifier1;
-    String identifier2;
-    Expr expr1;
-    Expr expr2;
+    String identifier1, identifier2;
+    Expr expr1, expr2;
     boolean isInstantiatingObject = false;
 
     void parse() {
@@ -12,6 +10,7 @@ public class Assign {
         Parser.scanner.nextToken();
 
         if (Parser.currentTokenIs(Core.ASSIGN)) {
+
             Parser.scanner.nextToken();
 
             if (!Parser.currentTokenIs(Core.NEW)) {

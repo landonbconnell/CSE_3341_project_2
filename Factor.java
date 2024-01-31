@@ -5,6 +5,7 @@ public class Factor {
     Expr expr;
 
     void parse() {
+
         if (Parser.currentTokenIs(Core.ID)) {
             identifier = Parser.scanner.getId();
 
