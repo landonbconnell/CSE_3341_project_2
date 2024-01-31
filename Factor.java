@@ -21,6 +21,8 @@ public class Factor {
                     System.out.println("ERROR: expected ']'.");
                     System.exit(0);
                 }
+
+                Parser.scanner.nextToken();
             }
 
         } else if (Parser.currentTokenIs(Core.CONST)) {
@@ -37,6 +39,8 @@ public class Factor {
                 System.out.println("ERROR: expected ')'.");
                 System.exit(0);
             }
+
+            Parser.scanner.nextToken();
 
         } else if (Parser.currentTokenIs(Core.IN)) {
             Parser.scanner.nextToken();

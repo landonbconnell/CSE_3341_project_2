@@ -11,7 +11,7 @@ public class StmtSeq {
         Parser.scanner.nextToken();
 
         // syntax is <stmt><stmt-seq>
-        if (!Parser.currentTokenIs(Core.END)) {
+        if (!Parser.currentTokenIs(Core.END) && !Parser.currentTokenIs(Core.ELSE)) {
             stmt_seq = new StmtSeq();
             stmt_seq.parse();
         }

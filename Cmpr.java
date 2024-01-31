@@ -4,7 +4,7 @@ public class Cmpr {
     String comparator;
 
     void parse() {
-        
+
         expr1 = new Expr();
         expr1.parse();
 

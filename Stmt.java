@@ -7,7 +7,6 @@ public class Stmt {
     Decl decl;
 
     void parse() {
-
         if (Parser.currentTokenIs(Core.ID)) {
             assign = new Assign();
             assign.parse();

@@ -4,7 +4,7 @@ procedure test25 is
 begin
 	n = 5;
 	x = 4;
-while not  do
+while not x == 0 do
 	n = n * x;
 	x = x - 1;
 out(n);

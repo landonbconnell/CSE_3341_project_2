@@ -28,8 +28,7 @@ public class Cond {
             Parser.scanner.nextToken();
 
         } else {
-            Parser.scanner.nextToken();
-
+            
             cmpr = new Cmpr();
             cmpr.parse();
 
@@ -58,6 +57,7 @@ public class Cond {
     
             if (modifier != null) {
                 System.out.print((!modifier.equals("not") ? " " : "") + modifier + " ");
+                cond.printer();
             }
         }
     }

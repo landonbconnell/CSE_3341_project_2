@@ -5,11 +5,11 @@ procedure test24 is
 begin
 	x = 5;
 	y = 10;
-while not  do
-	if in() < ythen
+while not x == y do
+	if x < y then
 	x = x + 2;
 end
-	if not then
+	if not x < y then
 	y = y + 1;
 end
 end

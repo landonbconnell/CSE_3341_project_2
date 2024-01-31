@@ -4,7 +4,7 @@ procedure test14 is
 begin
 	x = 10;
 	y = x;
-	if in() == ythen
+	if x == y then
 	integer z;
 	z = x + y;
 out(z);

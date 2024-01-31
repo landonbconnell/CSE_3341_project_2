@@ -36,7 +36,7 @@ public class If {
     void printer() {
         System.out.print("\tif ");
         cond.printer();
-        System.out.println("then");
+        System.out.println(" then");
         
         stmt_seq1.printer();
 
