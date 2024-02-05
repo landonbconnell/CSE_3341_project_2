@@ -24,4 +24,12 @@ public class Decl {
             decl_obj.printer();
         }
     }
+
+    void check() {
+        if (decl_int != null) {
+            decl_int.check();
+        } else {
+            decl_obj.check();
+        }
+    }
 }

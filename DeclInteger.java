@@ -1,3 +1,6 @@
+import java.util.Map;
+import java.util.Set;
+
 public class DeclInteger {
 
     String identifier;
@@ -24,5 +27,15 @@ public class DeclInteger {
 
     void printer() {
         System.out.println("\tinteger " + identifier + ";");
+    }
+
+    void check() {
+        if (!SemanticChecker.isInScope(identifier)) {
+            Set<Variable> currentScope = SemanticChecker.scopes.getFirst();
+            currentScope.add(new Variable(identifier, Type.INTEGER));
+        } else {
+            System.out.println("ERROR: " + identifier + " already declared in scope.");
+            System.exit(0);
+        }
     }
 }

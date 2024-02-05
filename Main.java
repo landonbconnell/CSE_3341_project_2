@@ -1,6 +1,7 @@
 class Main {
 
-    static Scanner scanner;
+    static Parser parser;
+    static SemanticChecker semanticChecker;
 
     public static void main(String[] args) {
     /*
@@ -9,8 +10,12 @@ class Main {
     *  3. Perform semantic checks on the parse tree.
     *  4. Use recursive descent to print the Core program from the parse tree.
     */
-        Parser parser = new Parser(args[0]);
+        parser = new Parser(args[0]);
+        semanticChecker = new SemanticChecker();
+
         parser.start();
+
+        semanticChecker.run(parser.procedure);
 
         parser.procedure.printer();
     }

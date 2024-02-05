@@ -93,7 +93,6 @@ public class Assign {
     }
 
     void printer() {
-
         // id = <expr>; | id = new object( <expr> );
         if ((expr1 != null) && (expr2 == null)) {
 
@@ -103,7 +102,7 @@ public class Assign {
                 expr1.printer();
                 System.out.println(";");
 
-                // id = new object( <expr> );
+            // id = new object( <expr> );
             } else {
                 System.out.print("\t" + identifier1 + " = new object( ");
                 expr1.printer();
@@ -121,6 +120,31 @@ public class Assign {
         // id : id;
         } else if (identifier2 != null) {
             System.out.println("\t" + identifier1 + " : " + identifier2 + ";");
+        }
+    }
+
+    void check() {
+        if (identifier2 == null) {
+            if (!SemanticChecker.isInScope(identifier1)) {
+                System.out.println("ERROR: " + identifier1 + " has not been declared.");
+                System.exit(0);
+            }
+            
+            // if (isInstantiatingObject) {
+            //     if (SemanticChecker.getType(identifier1) != Type.OBJECT) {
+            //         System.out.println("ERROR: " );
+            //     }
+            // }
+
+        } else {
+            if (!SemanticChecker.isInScope(identifier1)) {
+                System.out.println("ERROR: " + identifier1 + " has not been declared.");
+                System.exit(0);
+            }
+            if (!SemanticChecker.isInScope(identifier2)) {
+                System.out.println("ERROR: " + identifier2 + " has not been declared.");
+                System.exit(0);
+            }
         }
     }
 }

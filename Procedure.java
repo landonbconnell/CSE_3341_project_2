@@ -1,3 +1,8 @@
+import java.util.Map;
+import java.util.Set;
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class Procedure {
     String procedureName;
     DeclSeq decl_seq;
@@ -69,5 +74,19 @@ public class Procedure {
         stmt_seq.printer();
 
         System.out.println("end");
+    }
+
+    void check() {
+        Set<Variable> globalScope = new HashSet<>();
+        SemanticChecker.scopes.addFirst(globalScope);
+
+        if (decl_seq != null) {
+            decl_seq.check();
+        }
+
+        Set<Variable> bodyScope = new HashSet<>();
+        SemanticChecker.scopes.addFirst(bodyScope);
+
+        stmt_seq.check();
     }
 }

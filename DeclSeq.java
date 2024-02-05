@@ -23,4 +23,11 @@ public class DeclSeq {
             decl_seq.printer();
         }
     }
+
+    void check() {
+        decl.check();
+        if (decl_seq != null) {
+            decl_seq.check();
+        }
+    }
 }

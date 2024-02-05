@@ -23,4 +23,11 @@ public class StmtSeq {
             stmt_seq.printer();
         }
     }
+
+    void check() {
+        stmt.check();
+        if (stmt_seq != null) {
+            stmt_seq.check();
+        }
+    }
 }

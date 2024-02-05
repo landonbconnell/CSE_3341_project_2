@@ -38,4 +38,18 @@ public class Stmt {
             decl.printer();
         }
     }
+
+    void check() {
+        if (assign != null) {
+            assign.check();
+        } else if (if_stmt != null) {
+            //if_stmt.check();
+        } else if (loop != null) {
+            //loop.check();
+        } else if (out != null) {
+            //out.check();
+        } else if (decl != null) {
+            decl.check();
+        }
+    }
 }
