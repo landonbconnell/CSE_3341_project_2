@@ -28,4 +28,9 @@ public class Cmpr {
         System.out.print(" " + comparator + " ");
         expr2.printer();
     }
+
+    void check() {
+        expr1.check();
+        expr2.check();
+    }
 }

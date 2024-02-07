@@ -47,4 +47,15 @@ public class If {
 
         System.out.println("end");
     }
+
+    void check() {
+        cond.check();
+        stmt_seq1.check();
+
+        if (stmt_seq2 != null) {
+            stmt_seq2.check();
+        }
+
+        System.out.println("end");
+    }
 }

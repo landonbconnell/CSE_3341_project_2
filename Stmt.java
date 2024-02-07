@@ -43,7 +43,7 @@ public class Stmt {
         if (assign != null) {
             assign.check();
         } else if (if_stmt != null) {
-            //if_stmt.check();
+            if_stmt.check();
         } else if (loop != null) {
             //loop.check();
         } else if (out != null) {
