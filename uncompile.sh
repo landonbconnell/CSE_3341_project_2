@@ -1,1 +1,2 @@
-rm Assign.class Cmpr.class Cond.class Core.class Decl.class DeclInteger.class DeclObj.class DeclSeq.class Expr.class Factor.class If.class Loop.class Main.class Out.class Parser.class Procedure.class Scanner.class SemanticChecker.class Stmt.class StmtSeq.class Term.class Type.class
+find . -type f -name "*.class" -exec rm {} +
+

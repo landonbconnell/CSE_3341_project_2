@@ -26,4 +26,9 @@ public class Expr {
             expr.printer();
         }
     }
+
+    void check() {
+        term.check();
+        if (expr != null) expr.check();
+    }
 }

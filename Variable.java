@@ -1,11 +1,13 @@
 public class Variable {
     String identifier;
     Type type;
-    int value;
+    Integer intValue;
+    Integer[] objValue;
 
     public Variable(String identifier, Type type) {
         this.identifier = identifier;
         this.type = type;
-        this.value = -1;
+        this.intValue = null;
+        this.objValue = null;
     }
 }

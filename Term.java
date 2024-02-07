@@ -26,4 +26,9 @@ public class Term {
             term.printer();
         }
     }
+
+    void check() {
+        factor.check();
+        if (term != null) term.check();
+    }
 }

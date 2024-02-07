@@ -30,6 +30,10 @@ public class SemanticChecker {
         return getVariable(identifier) != null;
     }
 
+    public static boolean isInitialized(Variable variable) {
+        return variable.intValue != null || variable.objValue != null;
+    }
+
     public void run(Procedure procedure) {
         procedure.check();
     }

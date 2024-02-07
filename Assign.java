@@ -123,26 +123,52 @@ public class Assign {
         }
     }
 
-    void check() {
-        if (identifier2 == null) {
-            if (!SemanticChecker.isInScope(identifier1)) {
-                System.out.println("ERROR: " + identifier1 + " has not been declared.");
-                System.exit(0);
-            }
-            
-            // if (isInstantiatingObject) {
-            //     if (SemanticChecker.getType(identifier1) != Type.OBJECT) {
-            //         System.out.println("ERROR: " );
-            //     }
-            // }
 
-        } else {
-            if (!SemanticChecker.isInScope(identifier1)) {
-                System.out.println("ERROR: " + identifier1 + " has not been declared.");
-                System.exit(0);
+    void check() {
+
+        if (!SemanticChecker.isInScope(identifier1)) {
+            System.out.println("ERROR: " + identifier1 + " has not been declared.");
+            System.exit(0);
+        }
+
+        Variable variable1 = SemanticChecker.getVariable(identifier1);
+
+        // id = <expr>; | id = new object( <expr> );
+        if ((expr1 != null) && (expr2 == null)) {
+
+            // id = <expr>;
+            if (!isInstantiatingObject) {
+                if (variable1.type != Type.INTEGER) {
+                    System.out.println("ERROR: cannot assign an integer to a variable of type 'object'.");
+                    System.exit(0);
+                }
+
+            // id = new object( <expr> );
+            } else {
+                if (variable1.type != Type.OBJECT) {
+                    System.out.println("ERROR: cannot assign an object to a variable of type 'integer'.");
+                    System.exit(0);
+                }
             }
+
+            expr1.check();
+
+        // id [ <expr> ] = <expr>;
+        } else if ((expr1 != null) && (expr2 != null)) {
+            
+            expr1.check();
+            expr2.check();
+
+        // id : id;
+        } else if (identifier2 != null) {
             if (!SemanticChecker.isInScope(identifier2)) {
                 System.out.println("ERROR: " + identifier2 + " has not been declared.");
+                System.exit(0);
+            }
+            Variable variable2 = SemanticChecker.getVariable(identifier2);
+
+            if (!SemanticChecker.isInitialized(variable2)) {
+                System.out.println("ERROR: cannot assign '" + identifier2 + "' to '" + identifier1 + "', because it has not been initialized.");
                 System.exit(0);
             }
         }

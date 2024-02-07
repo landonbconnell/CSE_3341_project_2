@@ -1,5 +1,5 @@
 procedure test1 is 
-	object x;
+	integer x;
 begin
 	x = 10;
 end
