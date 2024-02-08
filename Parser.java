@@ -11,10 +11,38 @@ public class Parser {
         return scanner.currentToken() == token;
     }
 
-    public static void checkCurrentTokenIs(Core expected) {
-        if (!currentTokenIs(expected)) {
-            System.out.println("ERROR: expected '" + tokenToString(expected) + "' but received '" + tokenToString(scanner.currentToken()) + "'.");
-            System.exit(0);
+    // may need to switch to varargs
+    public static void checkCurrentTokenIs(Core... expectedTokens) {
+        assert expectedTokens.length > 0 : "checkCurrentTokenIs expects 1 or more arguments.";
+
+        if (expectedTokens.length == 1) {
+            if (!currentTokenIs(expectedTokens[0])) {
+                System.out.println("ERROR: expected '" + tokenToString(expectedTokens[0]) + "' but received '" + tokenToString(scanner.currentToken()) + "'.");
+                System.exit(0);
+            }
+        } else {
+            boolean expectedTokenDetected = false;
+            
+            // sets expectedTokenDetected flag to true if at least one of the expected tokens is the current token
+            for (Core token : expectedTokens) if (currentTokenIs(token)) expectedTokenDetected = true;
+
+            if (!expectedTokenDetected) {
+                String expectedTokensList = "";
+
+                if (expectedTokens.length == 2) {
+                    // generates a list of expected tokens in the format "'token_1' or 'token_2',"
+                    expectedTokensList = "'" + tokenToString(expectedTokens[0]) + "' or '" + tokenToString(expectedTokens[1]) + "',";
+                } else {
+                    // generates a list of expected tokens in the format "'token_1', 'token_2', ..., or 'token_n',"
+                    for (int i = 0; i < expectedTokens.length - 2; i++) {
+                        expectedTokensList += "'" + tokenToString(expectedTokens[i]) + "', ";
+                    }
+                    expectedTokensList += "or '" + tokenToString(expectedTokens[expectedTokens.length - 1]) + "',";
+                }
+                
+                System.out.println("ERROR: expected " + expectedTokensList + " but received '" + tokenToString(scanner.currentToken()) + "'.");
+                System.exit(0);
+            }
         }
     }
 
