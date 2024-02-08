@@ -1,4 +1,4 @@
-notprocedure test1 is
+procedure test1 is
 	integer x;
 begin
 	x=10;

@@ -9,18 +9,12 @@ public class Procedure {
 
         Parser.scanner.nextToken();
 
-        if (!Parser.currentTokenIs(Core.ID)) {
-            System.out.println("ERROR: expected identifier.");
-            System.exit(0);
-        }
+        Parser.checkCurrentTokenIs(Core.ID);
 
         procedureName = Parser.scanner.getId();
         Parser.scanner.nextToken();
 
-        if (!Parser.currentTokenIs(Core.IS)) {
-            System.out.println("ERROR: expected keyword 'is'.");
-            System.exit(0);
-        }
+        Parser.checkCurrentTokenIs(Core.IS);
 
         Parser.scanner.nextToken();
 
@@ -28,10 +22,7 @@ public class Procedure {
             decl_seq = new DeclSeq();
             decl_seq.parse();
 
-            if (!Parser.currentTokenIs(Core.BEGIN)) {
-                System.out.println("ERROR: expected keyword 'begin'.");
-                System.exit(0);
-            }
+            Parser.checkCurrentTokenIs(Core.BEGIN);
         }
 
         Parser.scanner.nextToken();
@@ -39,16 +30,11 @@ public class Procedure {
         stmt_seq = new StmtSeq();
         stmt_seq.parse();
 
-        if (!Parser.currentTokenIs(Core.END)) {
-            System.out.println("ERROR: expected keyword 'end'.");
-            System.exit(0);
-        }
+        Parser.checkCurrentTokenIs(Core.END);
 
         Parser.scanner.nextToken();
 
-        if (!Parser.currentTokenIs(Core.EOS)) {
-            System.out.println("ERROR: expected end-of-stream.");
-        }
+        Parser.checkCurrentTokenIs(Core.EOS);
     }
 
     void printer() {
@@ -59,21 +45,17 @@ public class Procedure {
         }
 
         System.out.println("begin");
-
         stmt_seq.printer();
-
         System.out.println("end");
     }
 
     void check() {
         SemanticChecker.pushNewScope();
-
         if (decl_seq != null) {
             decl_seq.check();
         }
-
         SemanticChecker.pushNewScope();
-
+        
         stmt_seq.check();
     }
 }
