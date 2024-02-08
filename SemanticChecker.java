@@ -32,18 +32,6 @@ public class SemanticChecker {
         return getVariable(identifier) != null;
     }
 
-    public static void addVariableToCurrentScope(String identifier, Type type) {
-        scopes.getFirst().add(new Variable(identifier, type));
-    }
-
-    public static void pushNewScope() {
-        scopes.addFirst(new HashSet<>());
-    }
-
-    public static void popScope() {
-        scopes.pop();
-    }
-
     public static boolean isInCurrentScope(String identifier) {
         boolean isInCurrentScope = false;
         Set<Variable> currentScope = scopes.peekFirst();
@@ -55,6 +43,18 @@ public class SemanticChecker {
         }
 
         return isInCurrentScope;
+    }
+
+    public static void addVariableToCurrentScope(String identifier, Type type) {
+        scopes.getFirst().add(new Variable(identifier, type));
+    }
+
+    public static void pushNewScope() {
+        scopes.addFirst(new HashSet<>());
+    }
+
+    public static void popScope() {
+        scopes.pop();
     }
 
     public void run(Procedure procedure) {
