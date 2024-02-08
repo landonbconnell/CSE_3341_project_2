@@ -35,4 +35,9 @@ public class Loop {
 
         System.out.println("end");
     }
+
+    void check() {
+        cond.check();
+        stmt_seq.check();
+    }
 }

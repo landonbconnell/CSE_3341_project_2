@@ -155,7 +155,17 @@ public class Assign {
 
         // id [ <expr> ] = <expr>;
         } else if ((expr1 != null) && (expr2 != null)) {
-            
+
+            if (variable1.type != Type.OBJECT) {
+                System.out.print("ERROR: the statement '" + identifier1 + "[");
+                expr1.printer();
+                System.out.print("] = ");
+                expr2.printer();
+                System.out.println("' cannot be used on a variable with type 'integer'.");
+
+                System.exit(0);
+            }
+
             expr1.check();
             expr2.check();
 
@@ -165,10 +175,11 @@ public class Assign {
                 System.out.println("ERROR: " + identifier2 + " has not been declared.");
                 System.exit(0);
             }
+
             Variable variable2 = SemanticChecker.getVariable(identifier2);
 
-            if (!SemanticChecker.isInitialized(variable2)) {
-                System.out.println("ERROR: cannot assign '" + identifier2 + "' to '" + identifier1 + "', because it has not been initialized.");
+            if (variable1.type != Type.OBJECT || variable2.type != Type.OBJECT) {
+                System.out.println("ERROR: the statement '" + identifier1 + " : " + identifier2 + "' requires " + identifier1 + " and " + identifier2 + " are both objects.");
                 System.exit(0);
             }
         }

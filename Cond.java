@@ -66,15 +66,13 @@ public class Cond {
 
         if (cmpr == null && modifier == null) {
             cond.check();
-
+            
         } else {
-
             if (cmpr != null) {
                 cmpr.check();
             }
     
             if (modifier != null) {
-                System.out.print((!modifier.equals("not") ? " " : "") + modifier + " ");
                 cond.check();
             }
         }

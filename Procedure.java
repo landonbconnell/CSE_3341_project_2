@@ -1,6 +1,3 @@
-import java.util.Set;
-import java.util.HashSet;
-
 public class Procedure {
     String procedureName;
     DeclSeq decl_seq;
@@ -75,15 +72,13 @@ public class Procedure {
     }
 
     void check() {
-        Set<Variable> globalScope = new HashSet<>();
-        SemanticChecker.scopes.addFirst(globalScope);
+        SemanticChecker.pushNewScope();
 
         if (decl_seq != null) {
             decl_seq.check();
         }
 
-        Set<Variable> bodyScope = new HashSet<>();
-        SemanticChecker.scopes.addFirst(bodyScope);
+        SemanticChecker.pushNewScope();
 
         stmt_seq.check();
     }

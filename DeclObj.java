@@ -1,5 +1,3 @@
-import java.util.Set;
-
 public class DeclObj {
 
     String identifier;
@@ -29,11 +27,10 @@ public class DeclObj {
     }
 
     void check() {
-        if (!SemanticChecker.isInScope(identifier)) {
-            Set<Variable> currentScope = SemanticChecker.scopes.getFirst();
-            currentScope.add(new Variable(identifier, Type.OBJECT));
+        if (!SemanticChecker.isInCurrentScope(identifier)) {
+            SemanticChecker.addVariableToCurrentScope(identifier, Type.OBJECT);
         } else {
-            System.out.println("ERROR: " + identifier + " already declared in scope.");
+            System.out.println("ERROR: " + identifier + " already declared current in scope.");
             System.exit(0);
         }
     }

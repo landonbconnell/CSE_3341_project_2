@@ -95,36 +95,22 @@ public class Factor {
     void check() {
         // id
         if (identifier != null) {
-            
             if (!SemanticChecker.isInScope(identifier)) {
                 System.out.println("ERROR: " + identifier + " has not been declared.");
-                System.exit(0);
-            }
-    
-            Variable variable1 = SemanticChecker.getVariable(identifier);
-
-            if (SemanticChecker.isInitialized(variable1)) {
-                System.out.println("ERROR: " + identifier + " is being used before it has been assigned a value.");
                 System.exit(0);
             }
 
             // id [ <expr> ]
             if (expr != null) {
-                
+                Variable variable = SemanticChecker.getVariable(identifier);
+                if (variable.type != Type.OBJECT) {
+                    System.out.print("ERROR: the statement '" + identifier + "[");
+                    expr.printer();
+                    System.out.print("]' cannot be used on a variable with type 'integer'.");
+
+                    System.exit(0);
+                }
             }
-
-        // const
-        } else if (constant != null) {
-            
-
-        // ( <expr> )
-        } else if (expr != null) {
-            
-
-        // in ();
-        } else {
-            
-
         }
     }
 }

@@ -55,7 +55,5 @@ public class If {
         if (stmt_seq2 != null) {
             stmt_seq2.check();
         }
-
-        System.out.println("end");
     }
 }

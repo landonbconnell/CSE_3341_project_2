@@ -32,4 +32,8 @@ public class Out {
         expr.printer();
         System.out.println(");");
     }
+
+    void check() {
+        expr.check();
+    }
 }

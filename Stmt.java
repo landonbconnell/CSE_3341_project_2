@@ -43,11 +43,15 @@ public class Stmt {
         if (assign != null) {
             assign.check();
         } else if (if_stmt != null) {
+            SemanticChecker.pushNewScope();
             if_stmt.check();
+            SemanticChecker.popScope();
         } else if (loop != null) {
-            //loop.check();
+            SemanticChecker.pushNewScope();
+            loop.check();
+            SemanticChecker.popScope();
         } else if (out != null) {
-            //out.check();
+            out.check();
         } else if (decl != null) {
             decl.check();
         }

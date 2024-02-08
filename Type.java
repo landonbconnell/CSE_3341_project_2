@@ -1,5 +1,4 @@
 enum Type {
     INTEGER,
-    OBJECT,
-    NONE
+    OBJECT
 }
