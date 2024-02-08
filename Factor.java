@@ -5,6 +5,9 @@ public class Factor {
     Expr expr;
 
     void parse() {
+
+        Parser.checkCurrentTokenIs(false, Core.ID, Core.CONST, Core.LPAREN, Core.IN);
+
         if (Parser.currentTokenIs(Core.ID)) {
             identifier = Parser.scanner.getId();
 
@@ -16,12 +19,7 @@ public class Factor {
                 expr = new Expr();
                 expr.parse();
 
-                if (!Parser.currentTokenIs(Core.RBRACE)) {
-                    System.out.println("ERROR: expected ']'.");
-                    System.exit(0);
-                }
-
-                Parser.scanner.nextToken();
+                Parser.checkCurrentTokenIs(true, Core.RBRACE);
             }
 
         } else if (Parser.currentTokenIs(Core.CONST)) {
@@ -34,32 +32,13 @@ public class Factor {
             expr = new Expr();
             expr.parse();
 
-            if (!Parser.currentTokenIs(Core.RPAREN)) {
-                System.out.println("ERROR: expected ')'.");
-                System.exit(0);
-            }
-
-            Parser.scanner.nextToken();
+            Parser.checkCurrentTokenIs(true, Core.RPAREN);
 
         } else if (Parser.currentTokenIs(Core.IN)) {
             Parser.scanner.nextToken();
 
-            if (!Parser.currentTokenIs(Core.LPAREN)) {
-                System.out.println("ERROR: expected '('.");
-                System.exit(0);
-            }
-
-            Parser.scanner.nextToken();
-
-            if (!Parser.currentTokenIs(Core.RPAREN)) {
-                System.out.println("ERROR: expected ')'.");
-                System.exit(0);
-            }
-
-            Parser.scanner.nextToken();
-        } else {
-            System.out.println("ERROR: expected identifier, constant, '(' or 'in()'.");
-            System.exit(0);
+            Parser.checkCurrentTokenIs(true, Core.LPAREN);
+            Parser.checkCurrentTokenIs(true, Core.RPAREN);
         }
     }
 

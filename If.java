@@ -10,12 +10,7 @@ public class If {
         cond = new Cond();
         cond.parse();
 
-        if (!Parser.currentTokenIs(Core.THEN)) {
-            System.out.println("ERROR: expected 'then'.");
-            System.exit(0);
-        }
-
-        Parser.scanner.nextToken();
+        Parser.checkCurrentTokenIs(true, Core.THEN);
 
         stmt_seq1 = new StmtSeq();
         stmt_seq1.parse();
@@ -27,10 +22,7 @@ public class If {
             stmt_seq2.parse();
         }
 
-        if (!Parser.currentTokenIs(Core.END)) {
-            System.out.println("ERROR: expected 'end'.");
-            System.exit(0);
-        }
+        Parser.checkCurrentTokenIs(false, Core.END);
     }
 
     void printer() {

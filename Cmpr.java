@@ -8,13 +8,12 @@ public class Cmpr {
         expr1 = new Expr();
         expr1.parse();
 
+        Parser.checkCurrentTokenIs(false, Core.EQUAL, Core.LESS);
+
         if (Parser.currentTokenIs(Core.EQUAL)) {
             comparator = "==";
         } else if (Parser.currentTokenIs(Core.LESS)) {
             comparator = "<";
-        } else {
-            System.out.println("ERROR: expected '==' or '<'.");
-            System.exit(0);
         }
 
         Parser.scanner.nextToken();

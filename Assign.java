@@ -29,11 +29,6 @@ public class Assign {
                 expr1 = new Expr();
                 expr1.parse(); // should consume tokens until ')' or ';' is detected
 
-                if (!Parser.currentTokenIs(Core.RPAREN)) {
-                    System.out.println("ERROR: expected ')'.");
-                    System.exit(0);
-                }
-
                 Parser.checkCurrentTokenIs(true, Core.RPAREN);
             }
         } else if (Parser.currentTokenIs(Core.LBRACE)) {
@@ -49,15 +44,10 @@ public class Assign {
             expr2.parse();
 
         } else if (Parser.currentTokenIs(Core.COLON)) {
-            
             Parser.scanner.nextToken();
-            
             Parser.checkCurrentTokenIs(false, Core.ID);
-
             identifier2 = Parser.scanner.getId();
-
             Parser.scanner.nextToken();
-
         }
 
         Parser.checkCurrentTokenIs(false, Core.SEMICOLON);

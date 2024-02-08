@@ -3,28 +3,13 @@ public class Out {
 
     void parse() {
         Parser.scanner.nextToken();
-
-        if (!Parser.currentTokenIs(Core.LPAREN)) {
-            System.out.println("ERROR: expected '('.");
-            System.exit(0);
-        }
-
-        Parser.scanner.nextToken();
+        Parser.checkCurrentTokenIs(true, Core.LPAREN);
 
         expr = new Expr();
         expr.parse();
 
-        if (!Parser.currentTokenIs(Core.RPAREN)) {
-            System.out.println("ERROR: expected ')'.");
-            System.exit(0);
-        }
-
-        Parser.scanner.nextToken();
-
-        if (!Parser.currentTokenIs(Core.SEMICOLON)) {
-            System.out.println("ERROR: expected ';'.");
-            System.exit(0);
-        }
+        Parser.checkCurrentTokenIs(true, Core.RPAREN);
+        Parser.checkCurrentTokenIs(false, Core.SEMICOLON);
     }
 
     void printer() {

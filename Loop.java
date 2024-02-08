@@ -10,20 +10,12 @@ public class Loop {
         cond = new Cond();
         cond.parse();
 
-        if (!Parser.currentTokenIs(Core.DO)) {
-            System.out.println("ERROR: expected 'do'.");
-            System.exit(0);
-        }
-
-        Parser.scanner.nextToken();
+        Parser.checkCurrentTokenIs(true, Core.DO);
 
         stmt_seq = new StmtSeq();
         stmt_seq.parse();
 
-        if (!Parser.currentTokenIs(Core.END)) {
-            System.out.println("ERROR: expected 'end'.");
-            System.exit(0);
-        }
+        Parser.checkCurrentTokenIs(false, Core.END);
     }
 
     void printer() {

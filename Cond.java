@@ -7,9 +7,9 @@ public class Cond {
     void parse() {
 
         if (Parser.currentTokenIs(Core.NOT)) {
-            modifier = "not";
-
             Parser.scanner.nextToken();
+
+            modifier = "not";
 
             cond = new Cond();
             cond.parse();
@@ -20,15 +20,9 @@ public class Cond {
             cond = new Cond();
             cond.parse();
 
-            if (!Parser.currentTokenIs(Core.RBRACE)) {
-                System.out.println("ERROR: expected ']'.");
-                System.exit(0);
-            }
-
-            Parser.scanner.nextToken();
+            Parser.checkCurrentTokenIs(true, Core.RBRACE);
 
         } else {
-            
             cmpr = new Cmpr();
             cmpr.parse();
 
