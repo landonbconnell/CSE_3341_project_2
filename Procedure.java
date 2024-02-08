@@ -5,13 +5,7 @@ public class Procedure {
 
     void parse() {
 
-        if (!Parser.currentTokenIs(Core.PROCEDURE)) {
-
-            // TODO - these error messages are repeated a lot, maybe create a function
-
-            System.out.println("ERROR: expected keyword 'procedure'.");
-            System.exit(0);
-        }
+        Parser.checkCurrentTokenIs(Core.PROCEDURE);
 
         Parser.scanner.nextToken();
 
