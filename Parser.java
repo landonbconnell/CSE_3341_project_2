@@ -12,7 +12,7 @@ public class Parser {
     }
 
     // may need to switch to varargs
-    public static void checkCurrentTokenIs(Core... expectedTokens) {
+    public static void checkCurrentTokenIs(boolean advanceScanner, Core... expectedTokens) {
         assert expectedTokens.length > 0 : "checkCurrentTokenIs expects 1 or more arguments.";
 
         if (expectedTokens.length == 1) {
@@ -44,6 +44,8 @@ public class Parser {
                 System.exit(0);
             }
         }
+
+        if (advanceScanner) scanner.nextToken();
     }
 
     void start() {

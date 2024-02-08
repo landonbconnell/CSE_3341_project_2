@@ -22,16 +22,11 @@ public class Assign {
 
                 Parser.scanner.nextToken();
 
-                if (!Parser.currentTokenIs(Core.OBJECT)) {
-                    System.out.println("ERROR: expected 'object'.");
-                    System.exit(0);
-                }
+                Parser.checkCurrentTokenIs(Core.OBJECT);
 
                 Parser.scanner.nextToken();
 
-                if (!Parser.currentTokenIs(Core.LPAREN)) {
-                    System.out.println("ERROR: expected '('.");
-                }
+                Parser.checkCurrentTokenIs(Core.LPAREN);
 
                 Parser.scanner.nextToken();
 
