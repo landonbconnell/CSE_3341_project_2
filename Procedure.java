@@ -16,9 +16,9 @@ public class Procedure {
         if (!Parser.currentTokenIs(Core.BEGIN)) {
             decl_seq = new DeclSeq();
             decl_seq.parse();
-
-            Parser.checkCurrentTokenIs(true, Core.BEGIN);
         }
+
+        Parser.checkCurrentTokenIs(true, Core.BEGIN);
 
         stmt_seq = new StmtSeq();
         stmt_seq.parse();
