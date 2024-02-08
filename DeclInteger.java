@@ -7,13 +7,12 @@ public class DeclInteger {
         // current token has already been checked, it's integer
         Parser.scanner.nextToken();
 
-        Parser.checkCurrentTokenIs(Core.ID);
+        Parser.checkCurrentTokenIs(false, Core.ID);
 
         identifier = Parser.scanner.getId();
-
         Parser.scanner.nextToken();
 
-        Parser.checkCurrentTokenIs(Core.SEMICOLON);
+        Parser.checkCurrentTokenIs(false, Core.SEMICOLON);
     }
 
     void printer() {

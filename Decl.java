@@ -5,7 +5,7 @@ public class Decl {
 
     void parse() {
 
-        Parser.checkCurrentTokenIs(Core.INTEGER, Core.OBJECT);
+        Parser.checkCurrentTokenIs(false, Core.INTEGER, Core.OBJECT);
 
         if (Parser.currentTokenIs(Core.INTEGER)) {
             decl_int = new DeclInteger();

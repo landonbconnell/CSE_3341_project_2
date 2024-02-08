@@ -9,8 +9,9 @@ public class Assign {
 
         Parser.scanner.nextToken();
 
-        if (Parser.currentTokenIs(Core.ASSIGN)) {
+        Parser.checkCurrentTokenIs(false, Core.ASSIGN, Core.COLON, Core.LBRACE);
 
+        if (Parser.currentTokenIs(Core.ASSIGN)) {
             Parser.scanner.nextToken();
 
             if (!Parser.currentTokenIs(Core.NEW)) {
@@ -22,13 +23,8 @@ public class Assign {
 
                 Parser.scanner.nextToken();
 
-                Parser.checkCurrentTokenIs(Core.OBJECT);
-
-                Parser.scanner.nextToken();
-
-                Parser.checkCurrentTokenIs(Core.LPAREN);
-
-                Parser.scanner.nextToken();
+                Parser.checkCurrentTokenIs(true, Core.OBJECT);
+                Parser.checkCurrentTokenIs(true, Core.LPAREN);
 
                 expr1 = new Expr();
                 expr1.parse(); // should consume tokens until ')' or ';' is detected
@@ -38,7 +34,7 @@ public class Assign {
                     System.exit(0);
                 }
 
-                Parser.scanner.nextToken();
+                Parser.checkCurrentTokenIs(true, Core.RPAREN);
             }
         } else if (Parser.currentTokenIs(Core.LBRACE)) {
             Parser.scanner.nextToken();
@@ -46,19 +42,8 @@ public class Assign {
             expr1 = new Expr();
             expr1.parse();
 
-            if (!Parser.currentTokenIs(Core.RBRACE)) {
-                System.out.println("ERROR: expected ']'.");
-                System.exit(0);
-            }
-
-            Parser.scanner.nextToken();
-
-            if (!Parser.currentTokenIs(Core.ASSIGN)) {
-                System.out.println("ERROR: expected '='.");
-                System.exit(0);
-            }
-
-            Parser.scanner.nextToken();
+            Parser.checkCurrentTokenIs(true, Core.RBRACE);
+            Parser.checkCurrentTokenIs(true, Core.ASSIGN);
 
             expr2 = new Expr();
             expr2.parse();
@@ -67,24 +52,15 @@ public class Assign {
             
             Parser.scanner.nextToken();
             
-            if (!Parser.currentTokenIs(Core.ID)) {
-                System.out.println("ERROR: expected an identifier.");
-                System.exit(0);
-            }
+            Parser.checkCurrentTokenIs(false, Core.ID);
 
             identifier2 = Parser.scanner.getId();
 
             Parser.scanner.nextToken();
 
-        } else {
-            System.out.println("ERROR: expected '=', ':', or '['.");
-            System.exit(0);
         }
 
-        if (!Parser.currentTokenIs(Core.SEMICOLON)) {
-            System.out.println("ERROR: expected ';'.");
-            System.exit(0);
-        }
+        Parser.checkCurrentTokenIs(false, Core.SEMICOLON);
     }
 
     void printer() {

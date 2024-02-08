@@ -1,1 +1,5 @@
-ERROR: expected 'integer' or 'object', but received 'id'.
+procedure test1 is 
+	integer x;
+begin
+	x = 10;
+end

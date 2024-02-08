@@ -5,36 +5,26 @@ public class Procedure {
 
     void parse() {
 
-        Parser.checkCurrentTokenIs(Core.PROCEDURE);
-
-        Parser.scanner.nextToken();
-
-        Parser.checkCurrentTokenIs(Core.ID);
+        Parser.checkCurrentTokenIs(true, Core.PROCEDURE);
+        Parser.checkCurrentTokenIs(false, Core.ID);
 
         procedureName = Parser.scanner.getId();
         Parser.scanner.nextToken();
 
-        Parser.checkCurrentTokenIs(Core.IS);
-
-        Parser.scanner.nextToken();
+        Parser.checkCurrentTokenIs(true, Core.IS);
 
         if (!Parser.currentTokenIs(Core.BEGIN)) {
             decl_seq = new DeclSeq();
             decl_seq.parse();
 
-            Parser.checkCurrentTokenIs(Core.BEGIN);
+            Parser.checkCurrentTokenIs(true, Core.BEGIN);
         }
-
-        Parser.scanner.nextToken();
 
         stmt_seq = new StmtSeq();
         stmt_seq.parse();
 
-        Parser.checkCurrentTokenIs(Core.END);
-
-        Parser.scanner.nextToken();
-
-        Parser.checkCurrentTokenIs(Core.EOS);
+        Parser.checkCurrentTokenIs(true, Core.END);
+        Parser.checkCurrentTokenIs(false, Core.EOS);
     }
 
     void printer() {
