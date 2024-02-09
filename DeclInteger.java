@@ -2,13 +2,16 @@ public class DeclInteger {
 
     String identifier;
 
+    /**
+     * Parses the <decl-integer> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <decl-integer> ::= integer id ;
+     */
     void parse() {
-
-        // current token has already been checked, it's integer
         Parser.scanner.nextToken();
 
         Parser.checkCurrentTokenIs(false, Core.ID);
 
+        // saves identifier for later use
         identifier = Parser.scanner.getId();
         Parser.scanner.nextToken();
 

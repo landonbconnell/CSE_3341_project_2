@@ -2,13 +2,16 @@ public class DeclObj {
 
     String identifier;
 
+    /**
+     * Parses the <decl-obj> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <decl-obj> ::= object id ;
+     */
     void parse() {
-
-        // current token has already been checked, it's object
         Parser.scanner.nextToken();
 
         Parser.checkCurrentTokenIs(false, Core.ID);
 
+        // saves identifier for later use
         identifier = Parser.scanner.getId();
         Parser.scanner.nextToken();
 

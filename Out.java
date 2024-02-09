@@ -1,6 +1,10 @@
 public class Out {
     Expr expr;
 
+    /**
+     * Parses the <out> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <out> ::= out ( <expr> ); 
+     */
     void parse() {
         Parser.scanner.nextToken();
         Parser.checkCurrentTokenIs(true, Core.LPAREN);

@@ -3,6 +3,10 @@ public class Cmpr {
     Expr expr1, expr2;
     String comparator;
 
+    /**
+     * Parses the <cmpr> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <cmpr> ::= <expr> == <expr> | <expr> < <expr>
+     */
     void parse() {
 
         expr1 = new Expr();

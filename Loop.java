@@ -3,6 +3,10 @@ public class Loop {
     Cond cond;
     StmtSeq stmt_seq;
 
+    /**
+     * Parses the <loop> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <loop> ::= while <cond> do <stmt-seq> end
+     */
     void parse() {
 
         Parser.scanner.nextToken();

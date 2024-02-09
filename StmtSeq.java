@@ -3,6 +3,10 @@ public class StmtSeq {
     Stmt stmt;
     StmtSeq stmt_seq;
 
+    /**
+     * Parses the <stmt-seq> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <stmt-seq> ::= <stmt> | <stmt><stmt-seq>
+     */
     void parse() {
 
         stmt = new Stmt();
@@ -10,7 +14,7 @@ public class StmtSeq {
 
         Parser.scanner.nextToken();
 
-        // syntax is <stmt><stmt-seq>
+        // <stmt><stmt-seq>
         if (!Parser.currentTokenIs(Core.END) && !Parser.currentTokenIs(Core.ELSE)) {
             stmt_seq = new StmtSeq();
             stmt_seq.parse();

@@ -3,6 +3,10 @@ public class If {
     Cond cond;
     StmtSeq stmt_seq1, stmt_seq2;
 
+    /**
+     * Parses the <if> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <if> ::= if <cond> then <stmt-seq> end | if <cond> then <stmt-seq> else <stmt-seq> end
+     */
     void parse() {
 
         Parser.scanner.nextToken();
@@ -15,6 +19,7 @@ public class If {
         stmt_seq1 = new StmtSeq();
         stmt_seq1.parse();
 
+        // if <cond> then <stmt-seq> else <stmt-seq> end
         if (Parser.currentTokenIs(Core.ELSE)) {
             Parser.scanner.nextToken();
 

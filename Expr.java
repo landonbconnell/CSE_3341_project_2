@@ -4,11 +4,17 @@ public class Expr {
     char operator;
     Expr expr;
 
+    /**
+     * Parses the <expr> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <expr> ::= <term> | <term> + <expr> | <term> – <expr>
+     */
     void parse() {
 
+        // <term>
         term = new Term();
         term.parse();
 
+        // <term> + <expr> | <term> – <expr>
         if (Parser.currentTokenIs(Core.ADD) || Parser.currentTokenIs(Core.SUBTRACT)) {
             operator = Parser.currentTokenIs(Core.ADD) ? '+' : '-';
             

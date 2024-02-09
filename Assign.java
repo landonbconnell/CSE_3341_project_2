@@ -4,6 +4,11 @@ public class Assign {
     Expr expr1, expr2;
     boolean isInstantiatingObject = false;
 
+
+    /**
+     * Parses the <assign> non-terminal in the Core context-free-grammar, which is defined as:
+     * <assign> ::= id = <expr>; | id [ <expr> ] = <expr>; | id = new object( <expr> ); | id : id;
+     */
     void parse() {
         identifier1 = Parser.scanner.getId();
 
@@ -11,13 +16,16 @@ public class Assign {
 
         Parser.checkCurrentTokenIs(false, Core.ASSIGN, Core.COLON, Core.LBRACE);
 
+        // id = <expr>; | id = new object( <expr> );
         if (Parser.currentTokenIs(Core.ASSIGN)) {
             Parser.scanner.nextToken();
 
+            // id = <expr>;
             if (!Parser.currentTokenIs(Core.NEW)) {
                 expr1 = new Expr();
-                expr1.parse(); // should consume tokens until ')' or ';' is detected
+                expr1.parse();
 
+            // id = new object( <expr> );
             } else {
                 isInstantiatingObject = true;
 
@@ -27,10 +35,12 @@ public class Assign {
                 Parser.checkCurrentTokenIs(true, Core.LPAREN);
 
                 expr1 = new Expr();
-                expr1.parse(); // should consume tokens until ')' or ';' is detected
+                expr1.parse();
 
                 Parser.checkCurrentTokenIs(true, Core.RPAREN);
             }
+
+        // id [ <expr> ] = <expr>;
         } else if (Parser.currentTokenIs(Core.LBRACE)) {
             Parser.scanner.nextToken();
 
@@ -43,6 +53,7 @@ public class Assign {
             expr2 = new Expr();
             expr2.parse();
 
+        // id : id;
         } else if (Parser.currentTokenIs(Core.COLON)) {
             Parser.scanner.nextToken();
             Parser.checkCurrentTokenIs(false, Core.ID);

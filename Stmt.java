@@ -6,22 +6,35 @@ public class Stmt {
     Out out;
     Decl decl;
 
+    /**
+     * Parses the <stmt> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <stmt> ::= <assign> | <if> | <loop> | <out> | <decl>
+     */
     void parse() {
 
         Parser.checkCurrentTokenIs(false, Core.ID, Core.IF, Core.WHILE, Core.OUT, Core.INTEGER, Core.OBJECT);
 
+        // <assign>
         if (Parser.currentTokenIs(Core.ID)) {
             assign = new Assign();
             assign.parse();
+
+        // <if>
         } else if (Parser.currentTokenIs(Core.IF)) {
             if_stmt = new If();
             if_stmt.parse();
+
+        // <loop>
         } else if (Parser.currentTokenIs(Core.WHILE)) {
             loop = new Loop();
             loop.parse();
+
+        // <out>
         } else if (Parser.currentTokenIs(Core.OUT)) {
             out = new Out();
             out.parse();
+
+        // <decl>
         } else if (Parser.currentTokenIs(Core.INTEGER) || Parser.currentTokenIs(Core.OBJECT)) {
             decl = new Decl();
             decl.parse();

@@ -4,15 +4,21 @@ public class Factor {
     Integer constant;
     Expr expr;
 
+    /**
+     * Parses the <factor> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <factor> ::= id | id [ <expr> ] | const | ( <expr> ) | in ( ) ;
+     */
     void parse() {
 
         Parser.checkCurrentTokenIs(false, Core.ID, Core.CONST, Core.LPAREN, Core.IN);
 
+        // id | id [ <expr> ]
         if (Parser.currentTokenIs(Core.ID)) {
+            // save identifier for later use
             identifier = Parser.scanner.getId();
-
             Parser.scanner.nextToken();
 
+            // id [ <expr> ]
             if (Parser.currentTokenIs(Core.LBRACE)) {
                 Parser.scanner.nextToken();
 
@@ -22,10 +28,12 @@ public class Factor {
                 Parser.checkCurrentTokenIs(true, Core.RBRACE);
             }
 
+        // const
         } else if (Parser.currentTokenIs(Core.CONST)) {
             constant = Parser.scanner.getConst();
             Parser.scanner.nextToken();
 
+        // ( <expr> )
         } else if (Parser.currentTokenIs(Core.LPAREN)) {
             Parser.scanner.nextToken();
 
@@ -34,6 +42,7 @@ public class Factor {
 
             Parser.checkCurrentTokenIs(true, Core.RPAREN);
 
+        // in ( )
         } else if (Parser.currentTokenIs(Core.IN)) {
             Parser.scanner.nextToken();
 

@@ -3,6 +3,10 @@ public class Procedure {
     DeclSeq decl_seq;
     StmtSeq stmt_seq;
 
+    /**
+     * Parses the <procedure> non-terminal in the Core context-free-grammar, which is defined as:
+     *      <procedure> ::= procedure ID is <decl-seq> begin <stmt-seq> end | procedure ID is begin <stmt-seq> end
+     */
     void parse() {
 
         Parser.checkCurrentTokenIs(true, Core.PROCEDURE);
@@ -13,6 +17,7 @@ public class Procedure {
 
         Parser.checkCurrentTokenIs(true, Core.IS);
 
+        // procedure ID is <decl-seq> begin <stmt-seq> end
         if (!Parser.currentTokenIs(Core.BEGIN)) {
             decl_seq = new DeclSeq();
             decl_seq.parse();

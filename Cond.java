@@ -4,8 +4,13 @@ public class Cond {
     Cmpr cmpr;
     String modifier;
 
+    /**
+     * Parses the <cond> non-terminal in the Core context-free-grammar, which is defined as:
+     *  <cond> ::= <cmpr> | not <cond> | [ <cond> ] | <cmpr> or <cond> | <cmpr> and <cond>
+     */
     void parse() {
 
+        // not <cond>
         if (Parser.currentTokenIs(Core.NOT)) {
             Parser.scanner.nextToken();
 
@@ -13,7 +18,8 @@ public class Cond {
 
             cond = new Cond();
             cond.parse();
-            
+        
+        // [ <cond> ]
         } else if (Parser.currentTokenIs(Core.LBRACE)) {
             Parser.scanner.nextToken();
 
@@ -22,10 +28,13 @@ public class Cond {
 
             Parser.checkCurrentTokenIs(true, Core.RBRACE);
 
+        // <cmpr> | <cmpr> or <cond> | <cmpr> and <cond>
         } else {
+            // <cmpr>
             cmpr = new Cmpr();
             cmpr.parse();
 
+            // <cmpr> or <cond> | <cmpr> and <cond>
             if (Parser.currentTokenIs(Core.OR) || Parser.currentTokenIs(Core.AND)) {
                 modifier = Parser.currentTokenIs(Core.OR) ? "or" : "and";
 
