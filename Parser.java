@@ -7,7 +7,7 @@ public class Parser {
         scanner = new Scanner(fileName);
     }
     
-    void start() {
+    void run() {
         procedure = new Procedure();
         procedure.parse();
     }

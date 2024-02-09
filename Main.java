@@ -13,7 +13,7 @@ class Main {
         parser = new Parser(args[0]);
         semanticChecker = new SemanticChecker();
 
-        parser.start();
+        parser.run();
 
         semanticChecker.run(parser.procedure);
 

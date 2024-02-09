@@ -88,7 +88,7 @@ public class Assign {
     void check() {
 
         if (!SemanticChecker.isInScope(identifier1)) {
-            System.out.println("ERROR: " + identifier1 + " has not been declared.");
+            System.out.println("ERROR: '" + identifier1 + "' has not been declared.");
             System.exit(0);
         }
 
@@ -133,7 +133,7 @@ public class Assign {
         // id : id;
         } else if (identifier2 != null) {
             if (!SemanticChecker.isInScope(identifier2)) {
-                System.out.println("ERROR: " + identifier2 + " has not been declared.");
+                System.out.println("ERROR: '" + identifier2 + "' has not been declared.");
                 System.exit(0);
             }
 

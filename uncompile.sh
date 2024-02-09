@@ -1,2 +1,2 @@
-find . -type f -name "*.class" -exec rm {} +
+rm *.class
 

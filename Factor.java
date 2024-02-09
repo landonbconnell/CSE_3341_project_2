@@ -75,7 +75,7 @@ public class Factor {
         // id
         if (identifier != null) {
             if (!SemanticChecker.isInScope(identifier)) {
-                System.out.println("ERROR: " + identifier + " has not been declared.");
+                System.out.println("ERROR: '" + identifier + "' has not been declared.");
                 System.exit(0);
             }
 

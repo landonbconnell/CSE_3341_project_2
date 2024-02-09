@@ -23,7 +23,7 @@ public class DeclInteger {
         if (!SemanticChecker.isInCurrentScope(identifier)) {
             SemanticChecker.addVariableToCurrentScope(identifier, Type.INTEGER);
         } else {
-            System.out.println("ERROR: " + identifier + " already declared in current scope.");
+            System.out.println("ERROR: '" + identifier + "' is declared multiple times in the same scope.");
             System.exit(0);
         }
     }
