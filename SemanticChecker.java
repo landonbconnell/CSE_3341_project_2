@@ -4,12 +4,20 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ * This class manages variable scopes and declarations for semantic checking, providing functionality
+ * to add, check, and retrieve variables within nested scopes.
+ */
 public class SemanticChecker {
 
     public static Deque<Set<Variable>> scopes;
 
     public SemanticChecker() {
         scopes = new ArrayDeque<>();
+    }
+
+    public void run(Procedure procedure) {
+        procedure.check();
     }
 
     /**
@@ -87,9 +95,5 @@ public class SemanticChecker {
      */
     public static void popScope() {
         scopes.pop();
-    }
-
-    public void run(Procedure procedure) {
-        procedure.check();
     }
 }

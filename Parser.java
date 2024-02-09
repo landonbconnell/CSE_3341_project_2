@@ -1,3 +1,7 @@
+/**
+ * This class initiates the parsing process by invoking the 'parse()' method on a 'Procedure' object and 
+ * provides helper methods to validate token correctness during the parsing of the Core programming language.
+ */
 public class Parser {
 
     public static Scanner scanner;
