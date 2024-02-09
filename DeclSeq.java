@@ -22,6 +22,7 @@ public class DeclSeq {
         }
     }
 
+    // Prints a sequence of declarations that's syntactically identical to the program input.
     void printer() {
         decl.printer();
         if (decl_seq != null) {
@@ -29,6 +30,7 @@ public class DeclSeq {
         }
     }
 
+    // Performs a semantic check on non-terminals lower in the parse tree.
     void check() {
         decl.check();
         if (decl_seq != null) {

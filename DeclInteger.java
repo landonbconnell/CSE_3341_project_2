@@ -18,10 +18,15 @@ public class DeclInteger {
         Parser.checkCurrentTokenIs(false, Core.SEMICOLON);
     }
 
+    // Prints an integer declaration that's syntactically identical to the program input.
     void printer() {
         System.out.println("\tinteger " + identifier + ";");
     }
 
+    /**
+     * Performs a semantic check on the integer declaration, verifying the provided identifier
+     * doesn't match another variable in the same scope.
+     */ 
     void check() {
         if (!SemanticChecker.isInCurrentScope(identifier)) {
             SemanticChecker.addVariableToCurrentScope(identifier, Type.INTEGER);

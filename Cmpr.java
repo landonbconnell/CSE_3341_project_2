@@ -26,12 +26,14 @@ public class Cmpr {
         expr2.parse();
     }
 
+    // Prints a comparison of two expressions that's syntactically identical to the program input.
     void printer() {
         expr1.printer();
         System.out.print(" " + comparator + " ");
         expr2.printer();
     }
 
+    // Performs a semantic check on non-terminals lower in the parse tree
     void check() {
         expr1.check();
         expr2.check();

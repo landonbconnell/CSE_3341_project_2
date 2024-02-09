@@ -21,6 +21,7 @@ public class StmtSeq {
         }
     }
 
+    // Prints a sequence of statements that's syntactically identical to the program input.
     void printer() {
         stmt.printer();
         if (stmt_seq != null) {
@@ -28,6 +29,7 @@ public class StmtSeq {
         }
     }
 
+    // Performs a semantic check on non-terminals lower in the parse tree
     void check() {
         stmt.check();
         if (stmt_seq != null) {

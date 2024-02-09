@@ -41,6 +41,7 @@ public class Stmt {
         }
     }
 
+    // Prints a statement that's syntactically identical to the program input.
     void printer() {
         if (assign != null) {
             assign.printer();
@@ -55,17 +56,18 @@ public class Stmt {
         }
     }
 
+    // Performs a semantic check on non-terminals lower in the parse tree
     void check() {
         if (assign != null) {
             assign.check();
         } else if (if_stmt != null) {
-            SemanticChecker.pushNewScope();
+            SemanticChecker.pushNewScope(); // Pushing if-statement scope
             if_stmt.check();
-            SemanticChecker.popScope();
+            SemanticChecker.popScope(); // Popping if-statement scope
         } else if (loop != null) {
-            SemanticChecker.pushNewScope();
+            SemanticChecker.pushNewScope(); // Pushing while-loop scope
             loop.check();
-            SemanticChecker.popScope();
+            SemanticChecker.popScope(); // Popping while-loop scope
         } else if (out != null) {
             out.check();
         } else if (decl != null) {

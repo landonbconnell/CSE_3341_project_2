@@ -22,6 +22,7 @@ public class Loop {
         Parser.checkCurrentTokenIs(false, Core.END);
     }
 
+    // Prints a while-loop that's syntactically identical to the program input.
     void printer() {
         System.out.print("while ");
         cond.printer();
@@ -32,6 +33,7 @@ public class Loop {
         System.out.println("end");
     }
 
+    // Performs a semantic check on non-terminals lower in the parse tree
     void check() {
         cond.check();
         stmt_seq.check();

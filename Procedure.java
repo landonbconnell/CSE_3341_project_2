@@ -32,7 +32,7 @@ public class Procedure {
         Parser.checkCurrentTokenIs(false, Core.EOS);
     }
 
-    // 
+    // Prints a Core program that's syntactically identical to the entire program input.
     void printer() {
         System.out.println("procedure " + procedureName + " is ");
         
@@ -45,11 +45,17 @@ public class Procedure {
         System.out.println("end");
     }
 
+    // Performs a semantic check on non-terminals lower in the parse tree
     void check() {
+    
+        // Pushing global scope
         SemanticChecker.pushNewScope();
+
         if (decl_seq != null) {
             decl_seq.check();
         }
+        
+        // Pushing main-body scope
         SemanticChecker.pushNewScope();
         
         stmt_seq.check();

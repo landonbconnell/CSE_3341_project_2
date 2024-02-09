@@ -16,12 +16,14 @@ public class Out {
         Parser.checkCurrentTokenIs(false, Core.SEMICOLON);
     }
 
+    // Prints a call to the 'out' function that's syntactically identical to the program input.
     void printer() {
         System.out.print("out(");
         expr.printer();
         System.out.println(");");
     }
 
+    // Performs a semantic check on a non-terminal lower in the parse tree.
     void check() {
         expr.check();
     }

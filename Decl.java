@@ -22,6 +22,7 @@ public class Decl {
         }
     }
 
+    // Prints a declaration statement that's syntactically identical to the program input
     void printer() {
         if (decl_int != null) {
             decl_int.printer();
@@ -30,6 +31,7 @@ public class Decl {
         }
     }
 
+    // Performs a semantic check on non-terminals lower in the parse tree
     void check() {
         if (decl_int != null) {
             decl_int.check();

@@ -25,6 +25,7 @@ public class Expr {
         }
     }
 
+    // Prints an expression that's syntactically identical to the program input.
     void printer() {
         term.printer();
         if (expr != null) {
@@ -33,6 +34,7 @@ public class Expr {
         }
     }
 
+    // Performs a semantic check on non-terminals lower in the parse tree
     void check() {
         term.check();
         if (expr != null) expr.check();

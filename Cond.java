@@ -44,20 +44,23 @@ public class Cond {
         }
     }
 
+    // Prints a condition that's syntactically identical to the program input.
     void printer() {
 
+        // [ <cond> ]
         if (cmpr == null && modifier == null) {
-
             System.out.print("[ ");
             cond.printer();
             System.out.print(" ]");
-
+        
+        // <cmpr> | not <cmpr> | <cmpr> or <cond> | <cmpr> and <cond>
         } else {
-
+            //<cmpr>
             if (cmpr != null) {
                 cmpr.printer();
             }
-    
+
+            // not <cmpr> | <cmpr> or <cond> | <cmpr> and <cond>
             if (modifier != null) {
                 System.out.print((!modifier.equals("not") ? " " : "") + modifier + " ");
                 cond.printer();
@@ -65,16 +68,21 @@ public class Cond {
         }
     }
 
+    // Performs a semantic check on the condition and non-terminals lower in the parse tree
     void check() {
 
+        // [ <cond> ]
         if (cmpr == null && modifier == null) {
             cond.check();
-            
+        
+        // <cmpr> | not <cmpr> | <cmpr> or <cond> | <cmpr> and <cond>
         } else {
+            //<cmpr>
             if (cmpr != null) {
                 cmpr.check();
             }
     
+            // not <cmpr> | <cmpr> or <cond> | <cmpr> and <cond>
             if (modifier != null) {
                 cond.check();
             }

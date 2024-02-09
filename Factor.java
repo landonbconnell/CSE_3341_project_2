@@ -51,6 +51,7 @@ public class Factor {
         }
     }
 
+    // Prints a factor that's syntactically identical to the program input.
     void printer() {
 
         // id
@@ -80,6 +81,7 @@ public class Factor {
         }
     }
 
+    // Performs a semantic check on the identifier used as a factor.
     void check() {
         // id
         if (identifier != null) {

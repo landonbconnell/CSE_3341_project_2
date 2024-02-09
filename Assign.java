@@ -64,6 +64,7 @@ public class Assign {
         Parser.checkCurrentTokenIs(false, Core.SEMICOLON);
     }
 
+    // Prints an assignment statement that's syntactically identical to the program input.
     void printer() {
         // id = <expr>; | id = new object( <expr> );
         if ((expr1 != null) && (expr2 == null)) {
@@ -95,7 +96,7 @@ public class Assign {
         }
     }
 
-
+    // Performs semantic checks on the assignment statement and non-terminals lower in the parse tree.
     void check() {
 
         if (!SemanticChecker.isInScope(identifier1)) {

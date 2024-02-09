@@ -30,6 +30,7 @@ public class If {
         Parser.checkCurrentTokenIs(false, Core.END);
     }
 
+    // Prints an if-statement that's syntactically identical to the program input.
     void printer() {
         System.out.print("\tif ");
         cond.printer();
@@ -45,6 +46,7 @@ public class If {
         System.out.println("end");
     }
 
+    // Performs a semantic check on non-terminals lower in the parse tree
     void check() {
         cond.check();
         stmt_seq1.check();

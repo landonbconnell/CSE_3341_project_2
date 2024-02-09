@@ -18,10 +18,15 @@ public class DeclObj {
         Parser.checkCurrentTokenIs(false, Core.SEMICOLON);
     }
 
+    // Prints an object declaration that's syntactically identical to the program input.
     void printer() {
         System.out.println("\tobject " + identifier + ";");
     }
 
+    /**
+     * Performs a semantic check on the object declaration, verifying the provided identifier
+     * doesn't match another variable in the same scope.
+     */ 
     void check() {
         if (!SemanticChecker.isInCurrentScope(identifier)) {
             SemanticChecker.addVariableToCurrentScope(identifier, Type.OBJECT);

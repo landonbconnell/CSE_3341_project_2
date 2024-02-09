@@ -24,6 +24,7 @@ public class Term {
         }
     }
 
+    // Prints a term that's syntactically identical to the program input.
     void printer() {
         factor.printer();
         if (term != null) {
@@ -32,6 +33,7 @@ public class Term {
         }
     }
 
+    // Performs a semantic check on non-terminals lower in the parse tree
     void check() {
         factor.check();
         if (term != null) term.check();
